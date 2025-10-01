@@ -82,21 +82,7 @@
 
     //In this case total is an object, decomposed into car, truck, bike, walk, van
     const count=data.reduce((total,vehicle)=>{
-      if(vehicle=="car"){
-         total.car+=1;
-      }
-      if(vehicle=="truck"){
-         total.truck+=1;
-      }
-      if(vehicle=="bike"){
-         total.bike+=1;
-      }
-      if(vehicle=="walk"){
-         total.walk+=1;
-      }
-      if(vehicle=="van"){
-         total.van+=1;
-      }
+      total[vehicle]+=1;
       return total;
     },{
       car:0,
