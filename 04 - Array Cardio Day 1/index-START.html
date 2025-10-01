@@ -38,28 +38,78 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+   const fifteen=inventors.filter((p)=>(p.year>=1500 && p.year<1600));
+   console.table(fifteen);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    console.table(inventors.map((p)=>({first:p.first,last:p.last})));
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    console.table(inventors.sort((a,b)=>(a.year-b.year)));
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    //reduce accepts 2 args, total (need to pass in 0 to initialise it at 0) and p (the element of each iteration)
+    const totalYears=inventors.reduce((total,p)=>(
+      total+(p.passed-p.year)
+    ),0)
+    console.log(totalYears);
 
     // 5. Sort the inventors by years lived
+    const yearsLived=inventors.sort((a,b)=>((a.passed-a.year)-(b.passed-b.year)));
+    console.table(yearsLived);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // const categories=document.querySelector(".mw-category");
+    // const links=Array.from(categories.querySelectorAll("a"));
+    // const de=links.map((link)=>(link.textContent))
+    //   .filter((street)=>(street.includes("de")))
+
+    // console.log(de);
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const lastNames=people.sort();
+    console.log(lastNames);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    //In this case total is an object, decomposed into car, truck, bike, walk, van
+    const count=data.reduce((total,vehicle)=>{
+      if(vehicle=="car"){
+         total.car+=1;
+      }
+      if(vehicle=="truck"){
+         total.truck+=1;
+      }
+      if(vehicle=="bike"){
+         total.bike+=1;
+      }
+      if(vehicle=="walk"){
+         total.walk+=1;
+      }
+      if(vehicle=="van"){
+         total.van+=1;
+      }
+      return total;
+    },{
+      car:0,
+      truck:0,
+      bike:0,
+      walk:0,
+      van:0
+    })
+      
+  
+
+    console.log(count);
+
 
   </script>
 </body>
